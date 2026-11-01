@@ -1,0 +1,49 @@
+---
+// Lightweight dialog opened by any [data-open-video] trigger.
+---
+
+<dialog
+  id="video-modal"
+  class="m-auto w-[min(92vw,960px)] rounded-3xl border border-hairline bg-white p-0 shadow-2xl backdrop:bg-ink/60 backdrop:backdrop-blur-sm"
+  aria-labelledby="video-modal-title"
+>
+  <div class="flex items-center justify-between gap-4 border-b border-hairline px-6 py-5">
+    <h2 id="video-modal-title" class="text-lg font-semibold text-ink">How FuseRemit works</h2>
+    <button
+      type="button"
+      data-close-video
+      class="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors hover:bg-pill hover:text-ink"
+    >
+      <span class="sr-only">Close</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="aspect-video w-full bg-[#EAF2FD]">
+    <div class="flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center">
+      <span class="btn-brand flex h-14 w-14 items-center justify-center rounded-full text-white shadow-cta">
+        <svg width="16" height="18" viewBox="0 0 10 12" fill="currentColor" aria-hidden="true">
+          <path d="M9.2 5.13a1 1 0 0 1 0 1.74l-7.2 4.1A1 1 0 0 1 .5 10.1V1.9A1 1 0 0 1 2 1.03l7.2 4.1Z"></path>
+        </svg>
+      </span>
+      <p class="text-sm font-medium text-muted">Drop your product walkthrough here — swap this block for an iframe or &lt;video&gt;.</p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const modal = document.getElementById("video-modal") as HTMLDialogElement | null;
+
+  document.querySelectorAll<HTMLElement>("[data-open-video]").forEach((trigger) => {
+    trigger.addEventListener("click", () => modal?.showModal());
+  });
+
+  modal?.querySelector("[data-close-video]")?.addEventListener("click", () => modal.close());
+
+  // Click on the backdrop (outside the dialog box) closes it.
+  modal?.addEventListener("click", (event) => {
+    if (event.target === modal) modal.close();
+  });
+</script>

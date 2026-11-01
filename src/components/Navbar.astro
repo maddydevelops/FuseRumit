@@ -1,0 +1,109 @@
+---
+const links = [
+  { label: "How it works", href: "#how-it-works" },
+  { label: "About us", href: "#about" },
+  { label: "Support", href: "#support" },
+];
+---
+
+<header class="relative z-30 w-full">
+  <nav
+    aria-label="Primary"
+    class="mx-auto flex max-w-[1680px] items-center justify-between gap-6 px-6 py-6 sm:px-8 lg:px-16 lg:py-7 xl:px-24"
+  >
+    <div class="flex items-center gap-10 xl:gap-20">
+      <a href="/" class="shrink-0" aria-label="FuseRemit home">
+        <img
+          src="/images/fuseremit-logo.png"
+          alt="FuseRemit"
+          width="1806"
+          height="405"
+          class="h-8 w-auto sm:h-9 lg:h-11 xl:h-12"
+          fetchpriority="high"
+        />
+      </a>
+
+      <ul class="hidden items-center gap-10 lg:flex xl:gap-12">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-[18px] font-medium text-ink-soft transition-colors hover:text-brand xl:text-[20px]"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a
+        href="#get-started"
+        class="btn-brand hidden items-center justify-center rounded-full px-7 py-3 text-[15px] font-semibold text-white shadow-cta transition-transform duration-200 hover:-translate-y-0.5 sm:inline-flex lg:px-8 lg:py-3.5 lg:text-[17px]"
+      >
+        Get started
+      </a>
+
+      <button
+        type="button"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-hairline bg-white/80 text-ink lg:hidden"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none" aria-hidden="true">
+          <path d="M1 1h18M1 7h18M1 13h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div
+    id="mobile-menu"
+    hidden
+    class="mx-6 mb-2 rounded-3xl border border-hairline bg-white/95 p-5 shadow-ghost backdrop-blur lg:hidden"
+  >
+    <ul class="flex flex-col gap-1">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="block rounded-xl px-3 py-3 text-base font-medium text-ink-soft hover:bg-pill hover:text-brand"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <a
+      href="#get-started"
+      class="btn-brand mt-3 flex items-center justify-center rounded-full px-6 py-3.5 text-base font-semibold text-white shadow-cta sm:hidden"
+    >
+      Get started
+    </a>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("nav-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    if (menu) menu.hidden = open;
+  });
+
+  menu?.addEventListener("click", (event) => {
+    if ((event.target as HTMLElement).closest("a")) {
+      toggle?.setAttribute("aria-expanded", "false");
+      menu.hidden = true;
+    }
+  });
+</script>

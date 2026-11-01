@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Sampled directly from the FuseRemit hero reference */
+  --color-ink: #061043;
+  --color-ink-soft: #131C53;
+  --color-brand: #0360FC;
+  --color-brand-deep: #0143BC;
+  --color-brand-bright: #0B66F3;
+  --color-brand-ring: #2E51D6;
+  --color-muted: #6B7AAF;
+  --color-slate: #525E85;
+  --color-brand-ink: #0B35D0;
+  --color-pill: #E5EFFE;
+  --color-hairline: #D7E5F8;
+
+  --shadow-cta: 0 14px 30px -10px rgb(3 76 220 / 0.55);
+  --shadow-ghost: 0 10px 26px -16px rgb(6 16 67 / 0.35);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: #f7fbfe;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Matches the vertical gradient measured on the reference buttons */
+  .btn-brand {
+    background-image: linear-gradient(180deg, var(--color-brand-bright) 0%, var(--color-brand-deep) 100%);
+  }
+
+  /* Frosted panel used by the step cards and the section's closing button */
+  .glass {
+    background-color: rgb(255 255 255 / 0.52);
+    border: 1px solid rgb(255 255 255 / 0.75);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.8),
+      0 18px 40px -24px rgb(16 56 120 / 0.22);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+}
+
+@keyframes hero-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -14px, 0); }
+}
+
+.hero-float {
+  animation: hero-float 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-float { animation: none; }
+  html { scroll-behavior: auto; }
+}
