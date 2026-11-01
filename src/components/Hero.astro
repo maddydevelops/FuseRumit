@@ -2,20 +2,18 @@
 import Navbar from "./Navbar.astro";
 ---
 
-<section class="relative isolate overflow-hidden">
-  <!-- Background: sampled from the reference — near-white at the left, cool blue toward the right -->
-  <div
-    class="absolute inset-0 -z-20"
-    style="background-image: linear-gradient(112deg, #FBFDFE 0%, #F6FAFE 42%, #ECF5FD 72%, #E3EFFC 100%);"
-    aria-hidden="true"
-  >
-  </div>
+<section class="relative isolate flex flex-col overflow-hidden lg:min-h-svh">
+  <!-- Accent wash over the page-wide gradient; faded out at the bottom so the
+       next section blends in with no visible seam -->
   <div
     class="absolute inset-0 -z-10"
-    style="background-image:
-      radial-gradient(60% 55% at 72% 38%, rgba(197, 223, 253, 0.55) 0%, rgba(197, 223, 253, 0) 70%),
-      radial-gradient(45% 45% at 12% 18%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 70%),
-      radial-gradient(55% 45% at 50% 108%, rgba(214, 231, 250, 0.7) 0%, rgba(214, 231, 250, 0) 70%);"
+    style="
+      background-image:
+        radial-gradient(60% 55% at 72% 38%, rgba(197, 223, 253, 0.5) 0%, rgba(197, 223, 253, 0) 70%),
+        radial-gradient(45% 45% at 12% 18%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 70%),
+        linear-gradient(112deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.3) 44%, rgba(255, 255, 255, 0) 66%, rgba(186, 216, 250, 0.4) 100%);
+      -webkit-mask-image: linear-gradient(180deg, #000 52%, rgba(0, 0, 0, 0) 100%);
+      mask-image: linear-gradient(180deg, #000 52%, rgba(0, 0, 0, 0) 100%);"
     aria-hidden="true"
   >
   </div>
@@ -23,7 +21,7 @@ import Navbar from "./Navbar.astro";
   <Navbar />
 
   <div
-    class="mx-auto grid max-w-[1680px] grid-cols-1 items-center gap-10 px-6 pb-16 pt-8 sm:px-8 lg:grid-cols-12 lg:gap-6 lg:px-16 lg:pb-10 lg:pt-0 xl:px-24 xl:pb-14"
+    class="mx-auto grid max-w-[1680px] grid-cols-1 items-center gap-10 px-6 pb-16 pt-8 sm:px-8 lg:grid-cols-12 lg:content-center lg:gap-6 lg:px-16 lg:pb-4 lg:pt-0 xl:px-24 xl:pb-6 lg:flex-1"
   >
     <!-- Copy -->
     <div class="min-w-0 text-center lg:col-span-5 lg:py-12 lg:text-left xl:py-20">
@@ -49,11 +47,11 @@ import Navbar from "./Navbar.astro";
       </p>
 
       <div
-        class="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:mt-12 lg:justify-start"
+        class="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:mt-12 lg:justify-start lg:gap-4 2xl:gap-5"
       >
         <a
           href="#get-started"
-          class="btn-brand group inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-9 py-4 text-[17px] font-semibold text-white shadow-cta transition-transform duration-200 hover:-translate-y-0.5 xl:px-11 xl:py-[18px] xl:text-[19px]"
+          class="btn-brand group inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-8 py-4 text-[16px] font-semibold text-white 2xl:text-[19px] shadow-cta transition-transform duration-200 hover:-translate-y-0.5 2xl:px-11 2xl:py-[18px] 2xl:text-[19px]"
         >
           Get started
           <svg
@@ -76,11 +74,11 @@ import Navbar from "./Navbar.astro";
         <button
           type="button"
           data-open-video
-          class="group inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full border border-hairline bg-white/85 px-7 py-[14px] text-[17px] font-semibold text-ink shadow-ghost backdrop-blur transition-colors duration-200 hover:border-brand/40 hover:bg-white xl:px-8 xl:py-4 xl:text-[19px]"
+          class="group inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full border border-hairline bg-white/85 px-7 py-[14px] text-[16px] font-semibold text-ink 2xl:text-[19px] shadow-ghost backdrop-blur transition-colors duration-200 hover:border-brand/40 hover:bg-white 2xl:px-8 2xl:py-4 2xl:text-[19px]"
         >
           See how it works
           <span
-            class="btn-brand flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white transition-transform duration-200 group-hover:scale-105 xl:h-9 xl:w-9"
+            class="btn-brand flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white transition-transform duration-200 group-hover:scale-105 2xl:h-9 2xl:w-9"
           >
             <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor" aria-hidden="true">
               <path d="M9.2 5.13a1 1 0 0 1 0 1.74l-7.2 4.1A1 1 0 0 1 .5 10.1V1.9A1 1 0 0 1 2 1.03l7.2 4.1Z"></path>
@@ -91,7 +89,7 @@ import Navbar from "./Navbar.astro";
     </div>
 
     <!-- 3D scene -->
-    <div class="min-w-0 lg:col-span-7 xl:-mr-10">
+    <div class="flex min-w-0 justify-center lg:col-span-7 lg:justify-end xl:-mr-10">
       <img
         src="/images/hero-scene.png"
         alt="FuseRemit app sending $500 to Nigeria, surrounded by currency coins, a 3D globe and live transfer notifications"
@@ -99,7 +97,7 @@ import Navbar from "./Navbar.astro";
         height="1195"
         fetchpriority="high"
         decoding="async"
-        class="hero-float mx-auto block w-full max-w-[560px] drop-shadow-[0_40px_60px_rgba(12,45,110,0.10)] sm:max-w-[660px] lg:max-w-none"
+        class="hero-float mx-auto block w-full max-w-[560px] drop-shadow-[0_40px_60px_rgba(12,45,110,0.10)] sm:max-w-[660px] lg:max-h-[76svh] lg:w-auto lg:max-w-full"
       />
     </div>
   </div>

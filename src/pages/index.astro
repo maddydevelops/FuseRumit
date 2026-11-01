@@ -2,13 +2,21 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import StepsSection from "../components/StepsSection.astro";
+import Footer from "../components/Footer.astro";
 import VideoModal from "../components/VideoModal.astro";
 ---
 
 <Layout>
-  <main>
-    <Hero />
-    <StepsSection />
-  </main>
+  <!--
+    One continuous gradient behind every section. Each section paints only
+    translucent accents on top, so there is no hard edge where they meet.
+  -->
+  <div class="page-wash relative isolate">
+    <main>
+      <Hero />
+      <StepsSection />
+    </main>
+    <Footer />
+  </div>
   <VideoModal />
 </Layout>
