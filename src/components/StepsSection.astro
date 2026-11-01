@@ -135,7 +135,6 @@ const steps = [
                 alt={step.alt}
                 width={step.width}
                 height={step.height}
-                loading="lazy"
                 decoding="async"
                 class="relative z-20 w-auto max-w-none object-contain"
                 style="height: var(--band);"
@@ -170,10 +169,9 @@ const steps = [
                 </div>
 
                 <p
-                  class="text-slate"
+                  class="step-body text-slate"
                   style="
                     margin-top: clamp(0.4rem, 1.2vh, 0.75rem);
-                    padding-left: calc(var(--badge) + var(--badge-gap));
                     font-size: clamp(0.9375rem, min(0.95vw, 1.72vh), 1.0625rem);
                     line-height: 1.58;"
                 >

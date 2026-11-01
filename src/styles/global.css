@@ -62,6 +62,19 @@
     );
   }
 
+  /* The reference indents the step copy under its title. That only leaves
+     enough room for the two-line wrap on wide screens, so below 2xl the copy
+     uses the full card width. */
+  .step-body {
+    padding-left: 0;
+  }
+
+  @media (min-width: 1536px) {
+    .step-body {
+      padding-left: calc(var(--badge) + var(--badge-gap));
+    }
+  }
+
   /* Frosted panel used by the step cards and the section's closing button */
   .glass {
     background-color: rgb(255 255 255 / 0.52);
